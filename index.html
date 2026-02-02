@@ -9,9 +9,15 @@
 
 
 </head>
+<div id="panelHistorial">
+  <h3>Historial</h3>
+  <ul id="listaHistorial"></ul>
+  <div class="total-acumulado">
+    Total: <strong id="totalAcumulado">$ 0</strong>
+  </div>
+</div>
 <body>
 
-<!-- rebuild -->
 
 
   <form id="cotizadorForm">
@@ -52,11 +58,12 @@
       <option>Luminaria</option>
       <option>Puerta</option>
       <option>Ventana</option>
+      <option>General</option>
     </select>
 
     <!-- P5 -->
     <label>5. Nivel de detalle (LOD)</label>
-    <select name="lod">
+    <select name="lod" id="lod">
       <option>LOD 100</option>
       <option>LOD 200</option>
       <option>LOD 300</option>
@@ -88,11 +95,30 @@
     <label>9. Cantidad de entidades</label>
     <input type="number" name="cantidad" min="1" value="1">
 
+    <label>Total estimado</label>
+    <input type="text" id="totalCotizacion" readonly>
+
     <button type="submit">Enviar cotización</button>
 
   </form>
+<div id="postEnvio" style="display:none; text-align:center;">
+  <h2>Cotización enviada</h2>
+  <p>¿Deseas agregar otra entidad o finalizar?</p>
+
+  <div class="post-buttons">
+    <button type="button" id="otraEntidad">Agregar otra entidad</button>
+    <button type="button" id="finalizar">Finalizar</button>
+  </div>
+
+</div>
+
+<div id="mensajeFinal" style="display:none; text-align:center;">
+  <h2>¡Gracias!</h2>
+  <p>Hemos recibido tu solicitud de cotización.<br>
+  Nos pondremos en contacto contigo pronto.</p>
+</div>
+
 
   <script src="script.js"></script>
 </body>
 </html>
-
