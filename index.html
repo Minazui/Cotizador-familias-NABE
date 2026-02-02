@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Cotizador de Entidades BIM</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/x-icon" href="assets/nabe.ico">
+  <meta name="theme-color" content="#2f5d4a">
+
+
+</head>
+<body>
+
+
+
+  <form id="cotizadorForm">
+    <h1>Cotizador de Creación de Entidades</h1>
+    <p>Complete el formulario para cotizar entidades BIM.</p>
+    <!-- ID -->
+    <label>Nombre del cliente *</label>
+    <input type="text" name="cliente_id" required>
+
+
+    <!-- P1 -->
+    <label>1. Identificador de la entidad *</label>
+    <input type="text" name="identificador" required>
+
+    <!-- P2 -->
+    <label>2. ¿La entidad es nativa de Revit?</label>
+    <select name="software" id="software" required>
+      <option value="">Seleccione</option>
+      <option value="nativo">Entidad nativa de Revit</option>
+      <option value="externo">Necesita software externo</option>
+    </select>
+
+    <!-- P3 -->
+    <label>3. ¿La entidad debe ser paramétrica?</label>
+    <select name="parametrica" id="parametrica">
+      <option value="no">No</option>
+      <option value="basica">Parámetros básicos</option>
+      <option value="compleja">Parámetros complejos</option>
+    </select>
+
+    <!-- P4 -->
+    <label>4. Categoría</label>
+    <select name="categoria">
+      <option>Mobiliario</option>
+      <option>Mueble de obra</option>
+      <option>Aparato eléctrico</option>
+      <option>Aparato sanitario</option>
+      <option>Luminaria</option>
+      <option>Puerta</option>
+      <option>Ventana</option>
+    </select>
+
+    <!-- P5 -->
+    <label>5. Nivel de detalle (LOD)</label>
+    <select name="lod">
+      <option>LOD 100</option>
+      <option>LOD 200</option>
+      <option>LOD 300</option>
+      <option>LOD 400</option>
+    </select>
+
+    <!-- P6 -->
+    <label>6. ¿Requiere simbología 2D adicional?</label>
+    <select name="simbolo2d">
+      <option>No</option>
+      <option>Sí</option>
+    </select>
+
+    <!-- P7 -->
+    <label>7. ¿Tiene conexiones MEP?</label>
+    <select name="mep">
+      <option>No</option>
+      <option>Sí</option>
+    </select>
+
+    <!-- P8 -->
+    <label>8. ¿Requiere configuración de tipos?</label>
+    <select name="tipos" id="tipos">
+      <option>No</option>
+      <option>Sí</option>
+    </select>
+
+    <!-- P9 -->
+    <label>9. Cantidad de entidades</label>
+    <input type="number" name="cantidad" min="1" value="1">
+
+    <button type="submit">Enviar cotización</button>
+
+  </form>
+
+  <script src="script.js"></script>
+</body>
+</html>
