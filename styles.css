@@ -114,3 +114,55 @@ button:hover {
     padding: 40px 30px;
   }
 }
+
+/* BOTONES POST ENVÍO */
+.post-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.post-buttons button {
+  width: auto;
+  padding: 12px 22px;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+/* PANEL LATERAL */
+#panelHistorial {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 280px;
+  height: 100vh;
+  background: #ffffff;
+  border-left: 1px solid #dfe7e2;
+  padding: 25px;
+  font-size: 13px;
+}
+
+#panelHistorial h3 {
+  margin-bottom: 15px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#listaHistorial {
+  list-style: none;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+#listaHistorial li {
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eef2ef;
+}
+
+.total-acumulado {
+  margin-top: 20px;
+  font-size: 15px;
+}
