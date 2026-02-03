@@ -319,3 +319,79 @@ button:hover {
     margin-right: auto;
   }
 }
+
+/* LOGO EN TÍTULO */
+.logo-titulo {
+  height: 32px;
+  width: auto;
+  vertical-align: middle;
+  margin-right: 12px;
+  margin-bottom: 4px;
+}
+
+/* CAMPO CON AYUDA */
+.campo-con-ayuda {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 26px;
+}
+
+.campo-con-ayuda label {
+  margin: 0;
+  flex: 1;
+}
+
+/* BOTÓN DE AYUDA */
+.btn-ayuda {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  border-radius: 50%;
+  background-color: #6b8f7a;
+  color: white;
+  border: none;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.btn-ayuda:hover {
+  background-color: #2f5d4a;
+  transform: scale(1.1);
+}
+
+/* TEXTO DE AYUDA */
+.ayuda-texto {
+  background-color: #f0f7f4;
+  border-left: 3px solid #6b8f7a;
+  padding: 12px 15px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #2f5d4a;
+  border-radius: 4px;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 200px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}

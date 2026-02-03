@@ -164,12 +164,13 @@ function actualizarHistorial() {
 
   historial.forEach(item => {
     const li = document.createElement("li");
+    
+    const precioUnidad = item.horasUnidad * VALOR_HORA;
 
     li.innerHTML = `
       <strong>${item.entidad}</strong><br>
-      Horas por unidad: ${item.horasUnidad}<br>
-      Horas totales: ${item.horasTotales}<br>
-      $ ${item.total.toLocaleString("es-CO")}
+      Precio por unidad: $ ${precioUnidad.toLocaleString("es-CO")}<br>
+      Total cotización: $ ${item.total.toLocaleString("es-CO")}
     `;
 
     lista.appendChild(li);
@@ -180,3 +181,18 @@ function actualizarHistorial() {
   // Actualizar contador del botón flotante
   contadorHistorial.textContent = historial.length;
 }
+
+// SISTEMA DE AYUDA
+document.querySelectorAll('.btn-ayuda').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const ayudaId = 'ayuda-' + btn.getAttribute('data-ayuda');
+    const ayudaDiv = document.getElementById(ayudaId);
+    
+    if (ayudaDiv.style.display === 'none' || ayudaDiv.style.display === '') {
+      ayudaDiv.style.display = 'block';
+    } else {
+      ayudaDiv.style.display = 'none';
+    }
+  });
+});

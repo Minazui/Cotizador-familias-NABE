@@ -32,7 +32,7 @@
   <div id="overlay" class="overlay"></div>
 
   <form id="cotizadorForm">
-    <h1>Cotizador de Creación de Entidades</h1>
+    <h1><img src="assets/nabe.png" alt="Logo NABE" class="logo-titulo"> Cotizador de Creación de Entidades</h1>
     <p>Complete el formulario para cotizar entidades BIM.</p>
     
     <!-- ID -->
@@ -40,11 +40,24 @@
     <input type="text" name="cliente_id" required>
 
     <!-- P1 -->
-    <label>1. Identificador de la entidad *</label>
+    <div class="campo-con-ayuda">
+      <label>1. Identificador de la entidad *</label>
+      <button type="button" class="btn-ayuda" data-ayuda="identificador">?</button>
+    </div>
+    <div id="ayuda-identificador" class="ayuda-texto" style="display:none;">
+      Ingrese un nombre único para identificar la entidad BIM (ej: "Silla Oficina Modelo A", "Lavamanos Tipo B").
+    </div>
     <input type="text" name="identificador" required>
 
     <!-- P2 -->
-    <label>2. ¿La entidad es nativa de Revit?</label>
+    <div class="campo-con-ayuda">
+      <label>2. ¿La entidad es nativa de Revit?</label>
+      <button type="button" class="btn-ayuda" data-ayuda="software">?</button>
+    </div>
+    <div id="ayuda-software" class="ayuda-texto" style="display:none;">
+      <strong>Nativa de Revit:</strong> La entidad se puede crear completamente dentro de Revit.<br>
+      <strong>Software externo:</strong> Requiere modelado en programas como SketchUp, Rhino, 3ds Max, etc.
+    </div>
     <select name="software" id="software" required>
       <option value="">Seleccione</option>
       <option value="nativo">Entidad nativa de Revit</option>
@@ -52,7 +65,15 @@
     </select>
 
     <!-- P3 -->
-    <label>3. ¿La entidad debe ser paramétrica?</label>
+    <div class="campo-con-ayuda">
+      <label>3. ¿La entidad debe ser paramétrica?</label>
+      <button type="button" class="btn-ayuda" data-ayuda="parametrica">?</button>
+    </div>
+    <div id="ayuda-parametrica" class="ayuda-texto" style="display:none;">
+      <strong>No:</strong> Modelo fijo sin opciones de modificación.<br>
+      <strong>Parámetros básicos:</strong> Dimensiones editables (alto, ancho, largo).<br>
+      <strong>Parámetros complejos:</strong> Opciones avanzadas (materiales, configuraciones, elementos opcionales).
+    </div>
     <select name="parametrica" id="parametrica">
       <option value="no">No</option>
       <option value="basica">Parámetros básicos</option>
@@ -60,7 +81,13 @@
     </select>
 
     <!-- P4 -->
-    <label>4. Categoría</label>
+    <div class="campo-con-ayuda">
+      <label>4. Categoría</label>
+      <button type="button" class="btn-ayuda" data-ayuda="categoria">?</button>
+    </div>
+    <div id="ayuda-categoria" class="ayuda-texto" style="display:none;">
+      Seleccione la categoría BIM más apropiada para esta entidad. Esto determina cómo Revit clasifica y gestiona el elemento.
+    </div>
     <select name="categoria">
       <option>Mobiliario</option>
       <option>Mueble de obra</option>
@@ -73,7 +100,16 @@
     </select>
 
     <!-- P5 -->
-    <label>5. Nivel de detalle (LOD)</label>
+    <div class="campo-con-ayuda">
+      <label>5. Nivel de detalle (LOD)</label>
+      <button type="button" class="btn-ayuda" data-ayuda="lod">?</button>
+    </div>
+    <div id="ayuda-lod" class="ayuda-texto" style="display:none;">
+      <strong>LOD 100:</strong> Representación conceptual básica.<br>
+      <strong>LOD 200:</strong> Geometría aproximada con información general.<br>
+      <strong>LOD 300:</strong> Geometría precisa con detalles específicos.<br>
+      <strong>LOD 400:</strong> Modelo detallado para fabricación/construcción.
+    </div>
     <select name="lod" id="lod">
       <option>LOD 100</option>
       <option>LOD 200</option>
@@ -82,28 +118,52 @@
     </select>
 
     <!-- P6 -->
-    <label>6. ¿Requiere simbología 2D adicional?</label>
+    <div class="campo-con-ayuda">
+      <label>6. ¿Requiere simbología 2D adicional?</label>
+      <button type="button" class="btn-ayuda" data-ayuda="simbolo2d">?</button>
+    </div>
+    <div id="ayuda-simbolo2d" class="ayuda-texto" style="display:none;">
+      Indica si necesita representaciones esquemáticas 2D personalizadas para plantas, cortes o diagramas (diferente a la vista 3D proyectada).
+    </div>
     <select name="simbolo2d">
       <option>No</option>
       <option>Sí</option>
     </select>
 
     <!-- P7 -->
-    <label>7. ¿Tiene conexiones MEP?</label>
+    <div class="campo-con-ayuda">
+      <label>7. ¿Tiene conexiones MEP?</label>
+      <button type="button" class="btn-ayuda" data-ayuda="mep">?</button>
+    </div>
+    <div id="ayuda-mep" class="ayuda-texto" style="display:none;">
+      Indica si la entidad necesita conectores para sistemas MEP (mecánicos, eléctricos o de plomería) como tomas de agua, electricidad, ventilación, etc.
+    </div>
     <select name="mep">
       <option>No</option>
       <option>Sí</option>
     </select>
 
     <!-- P8 -->
-    <label>8. ¿Requiere configuración de tipos?</label>
+    <div class="campo-con-ayuda">
+      <label>8. ¿Requiere configuración de tipos?</label>
+      <button type="button" class="btn-ayuda" data-ayuda="tipos">?</button>
+    </div>
+    <div id="ayuda-tipos" class="ayuda-texto" style="display:none;">
+      Indica si se necesitan múltiples variantes predefinidas de la misma familia (ej: mismo modelo en diferentes tamaños o acabados).
+    </div>
     <select name="tipos" id="tipos">
       <option>No</option>
       <option>Sí</option>
     </select>
 
     <!-- P9 -->
-    <label>9. Cantidad de entidades</label>
+    <div class="campo-con-ayuda">
+      <label>9. Cantidad de entidades</label>
+      <button type="button" class="btn-ayuda" data-ayuda="cantidad">?</button>
+    </div>
+    <div id="ayuda-cantidad" class="ayuda-texto" style="display:none;">
+      Número de unidades de esta misma entidad que desea cotizar (aplica descuento por volumen si corresponde).
+    </div>
     <input type="number" name="cantidad" min="1" value="1">
 
     <label>Total estimado</label>
