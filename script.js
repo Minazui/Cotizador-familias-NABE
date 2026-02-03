@@ -47,15 +47,21 @@ document.getElementById("cotizadorForm").addEventListener("submit", function(e) 
   // Ocultar formulario
   document.getElementById("cotizadorForm").style.display = "none";
 
+  document.getElementById("postEnvio").scrollIntoView({
+  behavior: "smooth"
+  });
+
+
   // Mostrar opciones post envío
   document.getElementById("postEnvio").style.display = "block";
-  //document.getElementById("cotizadorForm").reset()
   this.reset();
+  parametrica.disabled = false;
+  tipos.disabled = false;
+
 })
 
   .catch(err => {
   console.warn("Advertencia de fetch:", err);
-  // NO mostrar alert
   });
 });
 
@@ -105,11 +111,11 @@ function calcularTotal() {
 
   // Extras
   if (simbolo2d === "Sí") horasUnidad += 2;
-  if (simbolo2d === "no") horasUnidad += 0;
+  if (simbolo2d === "No") horasUnidad += 0;
   if (mepVal === "Sí") horasUnidad += 2;
-  if (mepVal === "no") horasUnidad += 0;
+  if (mepVal === "No") horasUnidad += 0;
   if (tiposVal === "Sí") horasUnidad += 2;
-  if (tiposVal === "no") horasUnidad += 0;
+  if (tiposVal === "No") horasUnidad += 0;
 
   totalHoras = horasUnidad * cantidad;
   total = totalHoras * VALOR_HORA;

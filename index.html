@@ -6,19 +6,21 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/x-icon" href="assets/nabe.ico">
   <meta name="theme-color" content="#2f5d4a">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
 
 </head>
-<div id="panelHistorial">
+
+<body>
+
+  <div id="panelHistorial">
   <h3>Historial</h3>
   <ul id="listaHistorial"></ul>
   <div class="total-acumulado">
     Total: <strong id="totalAcumulado">$ 0</strong>
   </div>
-</div>
-<body>
-
-
+  </div>
 
   <form id="cotizadorForm">
     <h1>Cotizador de Creación de Entidades</h1>
@@ -96,7 +98,7 @@
     <input type="number" name="cantidad" min="1" value="1">
 
     <label>Total estimado</label>
-    <input type="text" id="totalCotizacion" readonly>
+    <input type="text" id="totalCotizacion" readonly aria-live="polite">
 
     <button type="submit">Enviar cotización</button>
 
