@@ -45,7 +45,7 @@
       <button type="button" class="btn-ayuda" data-ayuda="identificador">?</button>
     </div>
     <div id="ayuda-identificador" class="ayuda-texto" style="display:none;">
-      Ingrese un nombre único para identificar la entidad BIM (ej: "Silla Oficina Modelo A", "Lavamanos Tipo B").
+      Explicacion 1.
     </div>
     <input type="text" name="identificador" required>
 
@@ -55,8 +55,7 @@
       <button type="button" class="btn-ayuda" data-ayuda="software">?</button>
     </div>
     <div id="ayuda-software" class="ayuda-texto" style="display:none;">
-      <strong>Nativa de Revit:</strong> La entidad se puede crear completamente dentro de Revit.<br>
-      <strong>Software externo:</strong> Requiere modelado en programas como SketchUp, Rhino, 3ds Max, etc.
+      Explicacion 2.
     </div>
     <select name="software" id="software" required>
       <option value="">Seleccione</option>
@@ -70,9 +69,7 @@
       <button type="button" class="btn-ayuda" data-ayuda="parametrica">?</button>
     </div>
     <div id="ayuda-parametrica" class="ayuda-texto" style="display:none;">
-      <strong>No:</strong> Modelo fijo sin opciones de modificación.<br>
-      <strong>Parámetros básicos:</strong> Dimensiones editables (alto, ancho, largo).<br>
-      <strong>Parámetros complejos:</strong> Opciones avanzadas (materiales, configuraciones, elementos opcionales).
+      Explicacion 3.
     </div>
     <select name="parametrica" id="parametrica">
       <option value="no">No</option>
@@ -86,7 +83,7 @@
       <button type="button" class="btn-ayuda" data-ayuda="categoria">?</button>
     </div>
     <div id="ayuda-categoria" class="ayuda-texto" style="display:none;">
-      Seleccione la categoría BIM más apropiada para esta entidad. Esto determina cómo Revit clasifica y gestiona el elemento.
+      Explicacion 4.
     </div>
     <select name="categoria">
       <option>Mobiliario</option>
@@ -105,10 +102,7 @@
       <button type="button" class="btn-ayuda" data-ayuda="lod">?</button>
     </div>
     <div id="ayuda-lod" class="ayuda-texto" style="display:none;">
-      <strong>LOD 100:</strong> Representación conceptual básica.<br>
-      <strong>LOD 200:</strong> Geometría aproximada con información general.<br>
-      <strong>LOD 300:</strong> Geometría precisa con detalles específicos.<br>
-      <strong>LOD 400:</strong> Modelo detallado para fabricación/construcción.
+      Explicacion 5.
     </div>
     <select name="lod" id="lod">
       <option>LOD 100</option>
@@ -123,7 +117,7 @@
       <button type="button" class="btn-ayuda" data-ayuda="simbolo2d">?</button>
     </div>
     <div id="ayuda-simbolo2d" class="ayuda-texto" style="display:none;">
-      Indica si necesita representaciones esquemáticas 2D personalizadas para plantas, cortes o diagramas (diferente a la vista 3D proyectada).
+      Explicacion 6.
     </div>
     <select name="simbolo2d">
       <option>No</option>
@@ -136,7 +130,7 @@
       <button type="button" class="btn-ayuda" data-ayuda="mep">?</button>
     </div>
     <div id="ayuda-mep" class="ayuda-texto" style="display:none;">
-      Indica si la entidad necesita conectores para sistemas MEP (mecánicos, eléctricos o de plomería) como tomas de agua, electricidad, ventilación, etc.
+      Explicacion 7.
     </div>
     <select name="mep">
       <option>No</option>
@@ -149,7 +143,7 @@
       <button type="button" class="btn-ayuda" data-ayuda="tipos">?</button>
     </div>
     <div id="ayuda-tipos" class="ayuda-texto" style="display:none;">
-      Indica si se necesitan múltiples variantes predefinidas de la misma familia (ej: mismo modelo en diferentes tamaños o acabados).
+      Explicacion 8.
     </div>
     <select name="tipos" id="tipos">
       <option>No</option>
@@ -162,7 +156,7 @@
       <button type="button" class="btn-ayuda" data-ayuda="cantidad">?</button>
     </div>
     <div id="ayuda-cantidad" class="ayuda-texto" style="display:none;">
-      Número de unidades de esta misma entidad que desea cotizar.
+      Explicacion 9..
     </div>
     <input type="number" name="cantidad" min="1" value="1">
 
@@ -190,4 +184,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>
