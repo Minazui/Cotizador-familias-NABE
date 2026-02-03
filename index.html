@@ -2,33 +2,42 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cotizador de Entidades BIM</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/x-icon" href="assets/nabe.ico">
   <meta name="theme-color" content="#2f5d4a">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-
 </head>
-
 <body>
 
-  <div id="panelHistorial">
-  <h3>Historial</h3>
-  <ul id="listaHistorial"></ul>
-  <div class="total-acumulado">
-    Total: <strong id="totalAcumulado">$ 0</strong>
+  <!-- Botón flotante para abrir historial en móvil -->
+  <button id="toggleHistorial" class="toggle-historial" aria-label="Ver historial">
+    <span class="historial-count" id="contadorHistorial">0</span>
+    📋
+  </button>
+
+  <!-- Panel de Historial -->
+  <div id="panelHistorial" class="panel-historial">
+    <div class="panel-header">
+      <h3>Historial</h3>
+      <button id="cerrarHistorial" class="cerrar-historial" aria-label="Cerrar historial">✕</button>
+    </div>
+    <ul id="listaHistorial"></ul>
+    <div class="total-acumulado">
+      Total: <strong id="totalAcumulado">$ 0</strong>
+    </div>
   </div>
-  </div>
+
+  <!-- Overlay para cerrar el panel al hacer clic fuera -->
+  <div id="overlay" class="overlay"></div>
 
   <form id="cotizadorForm">
     <h1>Cotizador de Creación de Entidades</h1>
     <p>Complete el formulario para cotizar entidades BIM.</p>
+    
     <!-- ID -->
     <label>Nombre del cliente *</label>
     <input type="text" name="cliente_id" required>
-
 
     <!-- P1 -->
     <label>1. Identificador de la entidad *</label>
@@ -98,28 +107,26 @@
     <input type="number" name="cantidad" min="1" value="1">
 
     <label>Total estimado</label>
-    <input type="text" id="totalCotizacion" readonly aria-live="polite">
+    <input type="text" id="totalCotizacion" readonly>
 
     <button type="submit">Enviar cotización</button>
-
   </form>
-<div id="postEnvio" style="display:none; text-align:center;">
-  <h2>Cotización enviada</h2>
-  <p>¿Deseas agregar otra entidad o finalizar?</p>
 
-  <div class="post-buttons">
-    <button type="button" id="otraEntidad">Agregar otra entidad</button>
-    <button type="button" id="finalizar">Finalizar</button>
+  <div id="postEnvio" style="display:none; text-align:center;">
+    <h2>Cotización enviada</h2>
+    <p>¿Deseas agregar otra entidad o finalizar?</p>
+
+    <div class="post-buttons">
+      <button type="button" id="otraEntidad">Agregar otra entidad</button>
+      <button type="button" id="finalizar">Finalizar</button>
+    </div>
   </div>
 
-</div>
-
-<div id="mensajeFinal" style="display:none; text-align:center;">
-  <h2>¡Gracias!</h2>
-  <p>Hemos recibido tu solicitud de cotización.<br>
-  Nos pondremos en contacto contigo pronto.</p>
-</div>
-
+  <div id="mensajeFinal" style="display:none; text-align:center;">
+    <h2>¡Gracias!</h2>
+    <p>Hemos recibido tu solicitud de cotización.<br>
+    Nos pondremos en contacto contigo pronto.</p>
+  </div>
 
   <script src="script.js"></script>
 </body>

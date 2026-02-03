@@ -2,8 +2,38 @@ const software = document.getElementById("software");
 const parametrica = document.getElementById("parametrica");
 const tipos = document.getElementById("tipos");
 let historial = [];
-let totalGeneral = 0; 
+let totalGeneral = 0;
 
+// Elementos del panel
+const panelHistorial = document.getElementById("panelHistorial");
+const toggleHistorial = document.getElementById("toggleHistorial");
+const cerrarHistorial = document.getElementById("cerrarHistorial");
+const overlay = document.getElementById("overlay");
+const contadorHistorial = document.getElementById("contadorHistorial");
+
+// Toggle del panel en móvil
+toggleHistorial.addEventListener("click", () => {
+  panelHistorial.classList.add("active");
+  overlay.classList.add("active");
+  document.body.style.overflow = "hidden"; // Prevenir scroll del body
+});
+
+// Cerrar panel
+function cerrarPanel() {
+  panelHistorial.classList.remove("active");
+  overlay.classList.remove("active");
+  document.body.style.overflow = "auto";
+}
+
+cerrarHistorial.addEventListener("click", cerrarPanel);
+overlay.addEventListener("click", cerrarPanel);
+
+// Cerrar con tecla ESC
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && panelHistorial.classList.contains("active")) {
+    cerrarPanel();
+  }
+});
 
 software.addEventListener("change", () => {
   if (software.value === "externo") {
@@ -20,7 +50,6 @@ software.addEventListener("change", () => {
   calcularTotal();
 });
 
-
 document.getElementById("cotizadorForm").addEventListener("submit", function(e) {
   e.preventDefault();
 
@@ -32,36 +61,29 @@ document.getElementById("cotizadorForm").addEventListener("submit", function(e) 
   })
   .then(response => response.text())
   .then(() => {
-  const resultado = calcularTotal();
+    const resultado = calcularTotal();
 
-  historial.push({
-    entidad: document.querySelector("input[name='identificador']").value,
-    horasUnidad: resultado.horasUnidad,
-    horasTotales: resultado.totalHoras,
-    total: resultado.total
-  });
+    historial.push({
+      entidad: document.querySelector("input[name='identificador']").value,
+      horasUnidad: resultado.horasUnidad,
+      horasTotales: resultado.totalHoras,
+      total: resultado.total
+    });
 
-  totalGeneral += resultado.total;
-  actualizarHistorial();
+    totalGeneral += resultado.total;
+    actualizarHistorial();
 
-  // Ocultar formulario
-  document.getElementById("cotizadorForm").style.display = "none";
+    // Ocultar formulario
+    document.getElementById("cotizadorForm").style.display = "none";
 
-  document.getElementById("postEnvio").scrollIntoView({
-  behavior: "smooth"
-  });
-
-
-  // Mostrar opciones post envío
-  document.getElementById("postEnvio").style.display = "block";
-  this.reset();
-  parametrica.disabled = false;
-  tipos.disabled = false;
-
-})
-
+    // Mostrar opciones post envío
+    document.getElementById("postEnvio").style.display = "block";
+    
+    this.reset();
+  })
   .catch(err => {
-  console.warn("Advertencia de fetch:", err);
+    console.warn("Advertencia de fetch:", err);
+    // NO mostrar alert
   });
 });
 
@@ -79,7 +101,6 @@ campos.forEach(campo => {
 
 let totalHoras = 0;
 let total = 0;
-
 
 function calcularTotal() {
   let horasUnidad = 2; // base fija
@@ -155,12 +176,7 @@ function actualizarHistorial() {
   });
 
   totalAcum.textContent = `$ ${totalGeneral.toLocaleString("es-CO")}`;
+  
+  // Actualizar contador del botón flotante
+  contadorHistorial.textContent = historial.length;
 }
-
-
-
-
-//ID de IMPLEMENTACION
-
-
-

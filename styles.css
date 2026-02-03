@@ -8,7 +8,7 @@
 /* BASE */
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #f4f7f3; /* blanco verdoso */
+  background-color: #f4f7f3;
   color: #1f2a24;
   line-height: 1.6;
   padding: 70px 20px;
@@ -74,7 +74,7 @@ input::placeholder {
 input:focus,
 select:focus {
   outline: none;
-  border-color: #6b8f7a; /* verde elegante */
+  border-color: #6b8f7a;
   box-shadow: 0 0 0 1px #6b8f7a;
 }
 
@@ -91,7 +91,7 @@ button {
   margin-top: 50px;
   width: 100%;
   padding: 14px;
-  background-color: #2f5d4a; /* verde oscuro */
+  background-color: #2f5d4a;
   color: #ffffff;
   border: none;
   border-radius: 4px;
@@ -106,13 +106,6 @@ button {
 /* HOVER BOTÓN */
 button:hover {
   background-color: #244a3a;
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  form {
-    padding: 40px 30px;
-  }
 }
 
 /* BOTONES POST ENVÍO */
@@ -130,40 +123,57 @@ button:hover {
   letter-spacing: 1px;
 }
 
-/* PANEL LATERAL */
-#panelHistorial {
+/* PANEL LATERAL - ESCRITORIO */
+.panel-historial {
   position: fixed;
   top: 0;
   right: 0;
-  width: 280px;
+  width: 320px;
   height: 100vh;
   background: #ffffff;
   border-left: 1px solid #dfe7e2;
   padding: 25px;
   font-size: 13px;
+  z-index: 1000;
+  overflow-y: auto;
 }
 
-@media (max-width: 768px) {
-  #panelHistorial {
-    display: none;
-  }
-
-  body.show-historial #panelHistorial {
-    display: block;
-  }
-}
-
-
-#panelHistorial h3 {
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 15px;
+}
+
+.panel-header h3 {
   font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 1px;
+  margin: 0;
+}
+
+.cerrar-historial {
+  display: none;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  color: #5f6f66;
+  cursor: pointer;
+  padding: 0;
+  width: auto;
+  margin: 0;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.cerrar-historial:hover {
+  color: #2f5d4a;
+  background: transparent;
 }
 
 #listaHistorial {
   list-style: none;
-  max-height: 70vh;
+  max-height: calc(100vh - 150px);
   overflow-y: auto;
 }
 
@@ -175,7 +185,137 @@ button:hover {
 
 .total-acumulado {
   margin-top: 20px;
+  padding-top: 15px;
+  border-top: 2px solid #2f5d4a;
   font-size: 15px;
 }
 
-/* aumeto para responsive /*
+/* BOTÓN FLOTANTE (oculto en escritorio) */
+.toggle-historial {
+  display: none;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background-color: #2f5d4a;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 999;
+  transition: transform 0.2s, background-color 0.2s;
+  margin: 0;
+  padding: 0;
+}
+
+.toggle-historial:hover {
+  background-color: #244a3a;
+  transform: scale(1.1);
+}
+
+.historial-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #e63946;
+  color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* OVERLAY */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+}
+
+.overlay.active {
+  display: block;
+}
+
+/* RESPONSIVE - MÓVILES */
+@media (max-width: 768px) {
+  body {
+    padding: 20px 15px;
+    padding-bottom: 100px;
+  }
+
+  form {
+    padding: 30px 20px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  /* Mostrar botón flotante */
+  .toggle-historial {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Panel como drawer lateral */
+  .panel-historial {
+    width: 85%;
+    max-width: 350px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    box-shadow: -4px 0 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .panel-historial.active {
+    transform: translateX(0);
+  }
+
+  /* Mostrar botón cerrar en móvil */
+  .cerrar-historial {
+    display: block;
+  }
+
+  #listaHistorial {
+    max-height: calc(100vh - 180px);
+  }
+}
+
+/* TABLETS */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .panel-historial {
+    width: 280px;
+  }
+
+  form {
+    max-width: 600px;
+    margin-right: 300px;
+  }
+}
+
+/* PANTALLAS GRANDES */
+@media (min-width: 1025px) {
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  
+  form {
+    margin-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
